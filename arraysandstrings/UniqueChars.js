@@ -8,7 +8,7 @@
  * E: empty string
  * 
  * time complexity
- * spac complexity
+ * space complexity
  */
 
 let isUnqiue = (stringValue) => {
