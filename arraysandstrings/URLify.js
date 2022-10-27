@@ -14,6 +14,10 @@ I: string
 0: string with all the spaces except the end of the word with %20
 C: assume the string is long enough to hold the additional characters
 E: "Mr John  Smith    " -> "Mr%20John%20Smith"
+
+
+Time complexity: O(N2) where N is the length of the string. because it is using replace method inside for loop
+Space complexity: O(1). 
 */
 
 function whiteSpaceToURL(str) {
@@ -33,10 +37,14 @@ function whiteSpaceToURL(str) {
 whiteSpaceToURL("Mr John Smith    ");
 
 
+/*
+Time complexity: O(N) where N is the length of the string.
+Space complexity: O(1). 
+*/
+
 var str2 = "Mr John Smith ";
 
 function urlify(str2) {
-          // Instantiate the string
  
           // Trim the given string
           str2 = str2.trim();
