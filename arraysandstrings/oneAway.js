@@ -53,5 +53,6 @@ function oneAway(compareStr, strInput) {
 console.log(oneAway("pale", "bale")); //true
 console.log(oneAway("pale", "bake")); // false
 console.log(oneAway("pales", "pale")); // true
-console.log(oneAway("pale", "pales")) // true
-console.log(oneAway("pale", "bae")) // false
+console.log(oneAway("pale", "pales")); // true
+console.log(oneAway("pale", "bae")); // false
+console.log(oneAway("pale", "bane")); // false
