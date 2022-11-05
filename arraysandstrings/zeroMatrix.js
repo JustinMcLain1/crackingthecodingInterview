@@ -45,7 +45,7 @@ const zeroingMat = (matrix, n)=> {
 
 console.log(zeroingMat(_matrix,3));
 
-// const mat = [[2,4,3],[2,-4,0],[1,3,2]];
+const mat = [[2,4,3],[2,-4,0],[1,3,2]];
 
 // //O(n^2)
 // const zeroMatrix = (mat,n) => {
@@ -84,3 +84,39 @@ console.log(zeroingMat(_matrix,3));
 
 // };
 // return console.log(zeroMatrix(mat,3));
+
+var setZeros = function(matrix) { 
+    let firstZeroRow; 
+    let firstColZero;
+
+    for(let row = 0; row < matrix.length; row++) {
+        for(let column=0; column < matrix[0].length; column++){
+            if(matrix[row][column]===0){
+                if(row===0) firstZeroRow =true;
+                if(column===0) firstColZero =true;
+                matrix[row][0] = 0;
+                matrix[0][column] = 0;
+            }
+        }
+    }
+    for(let row=1;row< matrix.length;row++){
+        for(let column=1;column<matrix[0].length;column++){
+            if(matrix[row][0]===0 || matrix[0][column]===0){
+                matrix[row][column]=0;
+            }
+        }
+    }
+    if(firstZeroRow){
+        matrix[0].fill(0);
+    }
+    if(firstColZero){
+        for(let i =0; i < matrix.length; i++){
+            matrix[i][0]=0;
+        }
+    }
+};
+
+//space O(1) because were changing in place
+//time O(M*n) its this because of how we do the iteration two layouts of row and column
+
+console.log(setZeros(mat))
