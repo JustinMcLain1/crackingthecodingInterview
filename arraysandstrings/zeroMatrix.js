@@ -111,8 +111,8 @@ let setZerosTwo = function(matrix) {
     for(let address of zerosA) {
         let row = address[0];
         let col = address[1];
-        setZeros(row,col,matrix);
+        setZerosHelper(row,col,matrix);
     }
 };
 
-console.log(setZerosTwo(mat));
+console.log(setZerosTwo(3, 3,  _matrix));
