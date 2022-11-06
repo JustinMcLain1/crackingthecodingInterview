@@ -47,44 +47,6 @@ console.log(zeroingMat(_matrix,3));
 
 const mat = [[2,4,3],[2,-4,0],[1,3,2]];
 
-// //O(n^2)
-// const zeroMatrix = (mat,n) => {
-
-    
-//     let firstZeroRow;
-//     let firstZeroColumn;
-
-//     for(let i = 0; i < n.length; i++) {
-//         for(let j = 0; j < n[0].length; j++) {
-//             if(mat[i][j] === 0) {
-//                 if(i===0) firstZeroRow = true;
-//                 if(j===0) firstZeroColumn = true;
-//                 mat[i][0] = 0;
-//                 mat[0][j] = 0;
-//             }
-
-//         }
-
-//     }
-//     for(let i = 1; i < n.length; i++){
-//         for(let j=1; j < n.length; j++) {
-//             if(mat[i][0] === 0 || mat[0][j] === 0) {
-//                 mat[i][j] = 0;
-//             }
-//         }
-//     }
-//     if(firstZeroRow) {
-//         mat[0].fill(0);
-//     }
-//     if(firstZeroColumn) {
-//         for(let i = 0; i < n.length; i++) {
-//             mat[i][0]=0;
-//         }
-//     }
-
-// };
-// return console.log(zeroMatrix(mat,3));
-
 var setZeros = function(matrix) { 
     let firstZeroRow; 
     let firstColZero;
@@ -120,3 +82,37 @@ var setZeros = function(matrix) {
 //time O(M*n) its this because of how we do the iteration two layouts of row and column
 
 console.log(setZeros(mat))
+
+//track through and trace where the location of 0 is in the arrays
+//store it in the result matrix 
+//do another iteration setting those values next to it and above it = 0
+
+
+//helper function
+//keeps rows and columns fixed sets i values to 0
+const setZerosHelper = (row, col, matrix) => {
+    for(let i =0; i < matrix.length; i++){
+        matrix[i][col] = 0;
+    }
+    for(let i =0; i < matrix[0].length; i++) {
+        matrix[row][i] = 0;
+    }
+}
+
+let setZerosTwo = function(matrix) {
+    const zerosA = [];
+
+    for(let row = 0; row < matrix.length; row++) {
+        for(let col = 0; col < matrix[0].length; col++){
+            if(matrix[row][col] === 0) zerosA.push([row,col]) 
+        }
+    }
+    //iterate over 0th address
+    for(let address of zerosA) {
+        let row = address[0];
+        let col = address[1];
+        setZeros(row,col,matrix);
+    }
+};
+
+console.log(setZerosTwo(mat));
